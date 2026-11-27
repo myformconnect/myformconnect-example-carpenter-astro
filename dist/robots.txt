@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oaklineworkshop.com/sitemap.xml
+Sitemap: https://oaklineworkshop.vercel.app/sitemap.xml

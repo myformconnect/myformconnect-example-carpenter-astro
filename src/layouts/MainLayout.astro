@@ -16,12 +16,55 @@ const {
   title,
   description = 'Oakline Workshop — Professional carpentry and custom woodworking. Built with purpose. Crafted to last.',
   currentPath = '/',
-  ogImage = '/images/hero_image.webp',
+  ogImage = '/images/og-image.jpg',
 } = Astro.props;
 
-const siteUrl = 'https://oaklineworkshop.com';
+const siteUrl = 'https://oaklineworkshop.vercel.app';
 const canonicalURL = new URL(currentPath, siteUrl).href;
 const fullTitle = currentPath === '/' ? `${title} — Oakline Workshop` : `${title} | Oakline Workshop`;
+const absoluteOgImage = new URL(ogImage, siteUrl).href;
+
+const schemaData = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  'name': 'Oakline Workshop',
+  'description': description,
+  'url': siteUrl,
+  'telephone': '+1-503-555-0142',
+  'email': 'hello@oaklineworkshop.com',
+  'image': absoluteOgImage,
+  'priceRange': '$$$',
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': '1428 SE Industrial Way, Suite 4',
+    'addressLocality': 'Portland',
+    'addressRegion': 'OR',
+    'postalCode': '97214',
+    'addressCountry': 'US'
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': 45.5152,
+    'longitude': -122.6587
+  },
+  'openingHoursSpecification': [
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      'opens': '08:00',
+      'closes': '17:00'
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': 'Saturday',
+      'opens': '09:00',
+      'closes': '14:00'
+    }
+  ],
+  'sameAs': [
+    siteUrl
+  ]
+};
 ---
 
 <!doctype html>
@@ -34,17 +77,32 @@ const fullTitle = currentPath === '/' ? `${title} — Oakline Workshop` : `${tit
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#232522" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-    <!-- Open Graph / Social -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Oakline Workshop" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={fullTitle} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:secure_url" content={absoluteOgImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Oakline Workshop — Fine Woodworking & Bespoke Carpentry" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content="Oakline Workshop — Fine Woodworking & Bespoke Carpentry" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schemaData)} />
 
     <!-- Google Fonts: Playfair Display for editorial headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
