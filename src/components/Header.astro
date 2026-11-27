@@ -1,0 +1,331 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="site-header">
+  <div class="container header-container">
+    <a href="/" class="brand" aria-label="Oakline Workshop - Home">
+      <span class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6H21V8H3V6Z" fill="#A4774D"/>
+          <path d="M5 11H19V13H5V11Z" fill="#C39A70"/>
+          <path d="M7 16H17V18H7V16Z" fill="#282A27"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Oakline Workshop</span>
+        <span class="brand-sub">Crafted Carpentry</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <li>
+              <a href={item.href} class:list={['nav-link', { 'is-active': isActive }]}>
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="/quote" class="btn btn-primary header-cta">
+        Request a Quote
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-toggle"
+        class="mobile-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Navigation -->
+  <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <ul class="mobile-nav-list">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <li>
+              <a href={item.href} class:list={['mobile-nav-link', { 'is-active': isActive }]}>
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <div class="mobile-nav-footer">
+        <a href="/quote" class="btn btn-primary btn-block">
+          Request a Quote
+        </a>
+        <div class="mobile-contact-snippet">
+          <p class="phone">(503) 555-0184</p>
+          <p class="email">hello@oaklineworkshop.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  if (toggleBtn && mobileNav) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileNav.setAttribute('aria-hidden', String(isExpanded));
+      toggleBtn.classList.toggle('is-active', !isExpanded);
+      mobileNav.classList.toggle('is-open', !isExpanded);
+      document.body.style.overflow = !isExpanded ? 'hidden' : '';
+    });
+
+    // Close mobile nav when clicking a link
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        toggleBtn.classList.remove('is-active');
+        mobileNav.classList.remove('is-open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(245, 243, 238, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color var(--transition);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .brand-sub {
+    font-size: 0.6875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-wood);
+    font-weight: 600;
+  }
+
+  .desktop-nav {
+    display: block;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    color: var(--color-text);
+  }
+
+  .nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-wood);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-cta {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.875rem;
+  }
+
+  /* Mobile menu button */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 105;
+  }
+
+  .hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .mobile-toggle.is-active .hamburger-bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .mobile-toggle.is-active .hamburger-bar:nth-child(2) {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  /* Mobile Navigation Drawer */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-nav-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--color-text);
+    display: block;
+  }
+
+  .mobile-nav-link.is-active {
+    color: var(--color-wood);
+  }
+
+  .mobile-nav-footer {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .btn-block {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-contact-snippet {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  .mobile-contact-snippet p {
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 860px) {
+    .desktop-nav,
+    .header-cta {
+      display: none;
+    }
+
+    .mobile-toggle {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: block;
+    }
+  }
+</style>

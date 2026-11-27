@@ -1,0 +1,609 @@
+/* ==========================================================================
+   Oakline Workshop — Design System & Global Styles
+   Editorial, minimal, warm neutral aesthetic for fine craftsmanship.
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-bg: #F5F3EE;
+  --color-bg-alt: #EAE6DF;
+  --color-bg-dark: #232522;
+  --color-text: #282A27;
+  --color-text-light: #F5F3EE;
+  --color-text-muted: #74746E;
+  --color-text-faint: #9C9B94;
+  --color-wood: #A4774D;
+  --color-wood-light: #C39A70;
+  --color-wood-dark: #7A5432;
+  --color-border: #D9D5CD;
+  --color-border-dark: #383A36;
+  --color-white: #FFFFFF;
+  --color-mfc-blue: #2563EB;
+  --color-mfc-blue-hover: #1D4ED8;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 6rem;
+  --spacing-3xl: 8rem;
+
+  /* Container */
+  --container-max: 1240px;
+  --container-narrow: 840px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset & Document */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-text);
+  letter-spacing: -0.015em;
+}
+
+.text-dark h1, .text-dark h2, .text-dark h3, .dark-theme h1, .dark-theme h2 {
+  color: var(--color-text-light);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.25rem);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2vw + 0.5rem, 1.85rem);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+}
+
+p.lead {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+p.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-wood);
+  margin-bottom: 0.75rem;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Section Spacing */
+.section {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+.section-sm {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+.bg-alt {
+  background-color: var(--color-bg-alt);
+}
+
+.bg-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+}
+
+.bg-dark p {
+  color: #C7C5BF;
+}
+
+.bg-dark .eyebrow {
+  color: var(--color-wood-light);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--color-wood);
+  color: var(--color-white);
+  border-color: var(--color-wood);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-wood-dark);
+  border-color: var(--color-wood-dark);
+  color: var(--color-white);
+}
+
+.btn-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-white);
+  border-color: var(--color-bg-dark);
+}
+
+.btn-dark:hover:not(:disabled) {
+  background-color: #000;
+  border-color: #000;
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--color-text);
+  color: var(--color-white);
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline-light:hover:not(:disabled) {
+  background-color: var(--color-white);
+  color: var(--color-bg-dark);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-wood);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.btn-link:hover {
+  color: var(--color-wood-dark);
+}
+
+/* Forms Common Styling */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.form-label .required {
+  color: #B91C1C;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-wood);
+  box-shadow: 0 0 0 3px rgba(164, 119, 77, 0.15);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-faint);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 680px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Alert Boxes */
+.form-alert {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  display: none;
+}
+
+.form-alert.is-visible {
+  display: block;
+}
+
+.form-alert-success {
+  background-color: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #166534;
+}
+
+.form-alert-error {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+.form-alert-loading {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-alert-loading.is-visible {
+  display: flex;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #CBD5E1;
+  border-top-color: var(--color-wood);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* MyFormConnect Attribution */
+.form-attribution {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.form-attribution a {
+  color: var(--color-wood, #A4774D);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.form-attribution a:hover {
+  color: var(--color-wood-dark, #7A5432);
+  text-decoration: underline;
+}
+
+/* Image Utilities */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Clean Divider */
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  border: none;
+  margin: var(--spacing-xl) 0;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ==========================================================================
+   Consultation Booking Modal & Compact Widget Footprint
+   ========================================================================== */
+.mfc-booking-popup .mfc-booking {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.mfc-booking-popup .mfc-booking-header {
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.35rem !important;
+  padding-right: 2rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-header-heading {
+  font-size: 0.9375rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-header-label {
+  font-size: 0.8125rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-nav {
+  margin-bottom: 0.35rem !important;
+  gap: 0.25rem 0.5rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-month {
+  font-size: 0.875rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-arrow {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  font-size: 1rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-tz {
+  font-size: 0.6875rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-weekdays {
+  margin-bottom: 0.2rem !important;
+  gap: 2px !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-weekday {
+  font-size: 0.6875rem !important;
+  padding: 0.15rem 0 !important;
+}
+
+.mfc-booking-popup .mfc-booking-calendar-grid {
+  gap: 2px !important;
+}
+
+.mfc-booking-popup .mfc-booking-day {
+  min-height: 1.85rem !important;
+  height: 1.85rem !important;
+  font-size: 0.8125rem !important;
+  padding: 0 !important;
+}
+
+.mfc-booking-popup .mfc-booking-times-heading {
+  font-size: 0.875rem !important;
+  margin: 0 0 0.4rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-times-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.35rem !important;
+  max-height: 180px !important;
+  overflow-y: auto !important;
+}
+
+.mfc-booking-popup .mfc-booking-slot {
+  padding: 0.4rem 0.3rem !important;
+  font-size: 0.8125rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-footer {
+  margin-top: 0.65rem !important;
+  padding-top: 0.5rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-btn {
+  padding: 0.55rem 1.15rem !important;
+  font-size: 0.875rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-field {
+  margin-bottom: 0.5rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-field-label {
+  font-size: 0.78125rem !important;
+  margin-bottom: 0.2rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-field-input {
+  padding: 0.45rem 0.65rem 0.45rem 2.2rem !important;
+  font-size: 0.8125rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-field-input-plain {
+  padding-left: 0.65rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-field-textarea {
+  min-height: 3rem !important;
+  padding: 0.45rem 0.65rem !important;
+  font-size: 0.8125rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-summary {
+  padding: 0.5rem 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-summary-datetime {
+  font-size: 0.8125rem !important;
+}
+
+.mfc-booking-popup .mfc-booking-summary-description {
+  font-size: 0.75rem !important;
+}
+
+.mfc-booking-popup .form-attribution {
+  margin-top: 0.4rem !important;
+  font-size: 0.75rem !important;
+}
+
+
+.mfc-booking-popup-close {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 30 !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 50% !important;
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  cursor: pointer !important;
+  outline: none !important;
+  line-height: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  box-sizing: border-box !important;
+  transition: all var(--transition) !important;
+}
+
+.mfc-booking-popup-close svg {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+  transition: transform var(--transition) !important;
+}
+
+.mfc-booking-popup-close:hover {
+  background-color: var(--color-bg-dark) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-bg-dark) !important;
+  transform: scale(1.05) !important;
+}
+
+.mfc-booking-popup-close:hover svg {
+  transform: rotate(90deg) !important;
+}

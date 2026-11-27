@@ -1,0 +1,270 @@
+---
+// projects.astro - Oakline Workshop Portfolio
+import MainLayout from '../layouts/MainLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Solid Oak Dining Table',
+    category: 'Custom Furniture',
+    description: 'An eight-seater dining table handcrafted from sustainably harvested, quarter-sawn white oak. Finished with a natural matte hardwax-oil to preserve the tactile grain texture.',
+    imageUrl: '/images/Solid_Oak_Dining_Table.avif',
+    materials: 'American White Oak',
+    year: '2025',
+  },
+  {
+    title: 'Custom Built-in Wardrobe',
+    category: 'Built-in Wardrobes',
+    description: 'Bespoke bedroom dressing suite built wall-to-wall with floor-to-ceiling proportions. Includes custom interior drawers, concealed hanging rails, and hand-turned timber pull latches.',
+    imageUrl: '/images/Custom_Built-in_Wardrobe.jpeg',
+    materials: 'White Ash & Aged Brass',
+    year: '2025',
+  },
+  {
+    title: 'Minimalist Kitchen Cabinetry',
+    category: 'Kitchen Cabinetry',
+    description: 'Contemporary Scandinavian-inspired cabinetry run with integrated finger channels, continuous grain-matched drawer fronts, and solid maple dovetailed drawers.',
+    imageUrl: '/images/Minimalist_Kitchen_Cabinetry.webp',
+    materials: 'Rift White Oak & Baltic Birch',
+    year: '2024',
+  },
+  {
+    title: 'Floating Wall Shelves',
+    category: 'Shelving & Storage',
+    description: 'Continuous 12-foot floating open display shelves engineered with internal heavy-gauge steel cantilever rod supports for books and collected ceramics.',
+    imageUrl: '/images/Shelving_Storage.jpeg',
+    materials: 'Solid Claro Walnut',
+    year: '2024',
+  },
+  {
+    title: 'Home Office Desk',
+    category: 'Custom Furniture',
+    description: 'Executive writing desk with sculpted bullnose edges, dual slim pencil drawers with traditional sliding organizing trays, and integrated under-desk cord routing.',
+    imageUrl: '/images/Custom_Furniture.jpg',
+    materials: 'Black Walnut & Leather Liner',
+    year: '2024',
+  },
+  {
+    title: 'Wooden Interior Feature Wall',
+    category: 'Interior Woodwork',
+    description: 'Architectural acoustic timber slat wall installation for a modern residence, using vertical Douglas fir battens set over a charcoal sound-dampening acoustic felt backdrop.',
+    imageUrl: '/images/Wooden_Interior_Feature_Wall.jpeg',
+    materials: 'Pacific Douglas Fir & Acoustic Felt',
+    year: '2024',
+  },
+  {
+    title: 'Crafted Walnut Credenza',
+    category: 'Custom Furniture',
+    description: 'Low-profile media sideboard with sliding tambour slatted doors, brass leveling feet, and internal cable access channels for audio components.',
+    imageUrl: '/images/Furniture_Restoration.jpg',
+    materials: 'Select American Walnut',
+    year: '2023',
+  },
+  {
+    title: 'Specialty Espresso Counter',
+    category: 'Commercial Woodwork',
+    description: 'Custom fluted white oak service counter and back-bar display joinery designed for high-volume service in an artisan specialty coffee bar.',
+    imageUrl: '/images/Commercial_Woodwork.jpeg',
+    materials: 'Waterproofed White Oak & Steel',
+    year: '2023',
+  },
+];
+---
+
+<MainLayout
+  title="Our Projects & Portfolio"
+  description="Browse custom woodworking projects by Oakline Workshop: dining tables, built-in wardrobes, architectural joinery, and tailored cabinetry."
+  currentPath="/projects"
+>
+  <!-- Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="header-content">
+        <p class="eyebrow">Portfolio</p>
+        <h1 class="page-title">Selected Projects</h1>
+        <p class="page-lead lead">
+          A showcase of recent commissions crafted in our workshop. Each piece reflects our commitment to natural wood character, structural integrity, and enduring proportions.
+        </p>
+      </div>
+
+      <div class="portfolio-meta-summary">
+        <div class="meta-item">
+          <span class="meta-count">8</span>
+          <span class="meta-text">Selected Works</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-count">100%</span>
+          <span class="meta-text">Hand-Joined</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-count">Pacific NW</span>
+          <span class="meta-text">Locally Built</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Gallery Grid -->
+  <section class="section projects-gallery-section">
+    <div class="container">
+      <div class="projects-grid">
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            category={project.category}
+            description={project.description}
+            imageUrl={project.imageUrl}
+            materials={project.materials}
+            year={project.year}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Philosophy Callout -->
+  <section class="section bg-alt commission-note-section">
+    <div class="container">
+      <div class="commission-box">
+        <div class="commission-text">
+          <p class="eyebrow">Custom Tailoring</p>
+          <h2>Every project begins with a conversation.</h2>
+          <p>
+            Do you have a specific space with awkward dimensions, an idea for a statement dining table, or blueprints for a full room of built-in storage? We will review your concepts, suggest timber species, and provide scaled plans.
+          </p>
+        </div>
+        <div class="commission-action">
+          <a href="/quote" class="btn btn-primary btn-lg">
+            Request a Project Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-content {
+    max-width: 760px;
+    margin-bottom: 2.5rem;
+  }
+
+  .page-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .portfolio-meta-summary {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .meta-count {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-text);
+  }
+
+  .meta-text {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .meta-divider {
+    width: 1px;
+    height: 30px;
+    background-color: var(--color-border);
+  }
+
+  /* Projects Grid */
+  .projects-gallery-section {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  /* Commission Note */
+  .commission-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 3rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .commission-text {
+    max-width: 650px;
+  }
+
+  .commission-text h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .commission-text p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .btn-lg {
+    padding: 1.1rem 2rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 860px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .commission-box {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .portfolio-meta-summary {
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .meta-divider {
+      display: none;
+    }
+
+    .btn-lg {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

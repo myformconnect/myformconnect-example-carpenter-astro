@@ -1,0 +1,173 @@
+---
+// ServiceSection.astro
+interface Props {
+  id: string;
+  title: string;
+  eyebrow?: string;
+  description: string;
+  details: string[];
+  imageUrl: string;
+  imageAlt: string;
+  reversed?: boolean;
+}
+
+const {
+  id,
+  title,
+  eyebrow = 'Craftsmanship',
+  description,
+  details,
+  imageUrl,
+  imageAlt,
+  reversed = false,
+} = Astro.props;
+---
+
+<section id={id} class:list={['service-row', { 'is-reversed': reversed }]}>
+  <div class="service-media">
+    <div class="media-frame">
+      <img
+        src={imageUrl}
+        alt={imageAlt}
+        class="service-img img-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+
+  <div class="service-content">
+    <p class="eyebrow">{eyebrow}</p>
+    <h3 class="service-title">{title}</h3>
+    <p class="service-description">{description}</p>
+
+    <div class="service-details-box">
+      <h4 class="details-heading">Capabilities & Scope</h4>
+      <ul class="details-list">
+        {details.map((detail) => (
+          <li>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8.5L6.5 12L13 4" stroke="#A4774D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{detail}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="service-actions">
+      <a href="/quote" class="btn btn-outline">
+        Request a Quote for {title}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5rem;
+    align-items: center;
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .service-row:last-child {
+    border-bottom: none;
+  }
+
+  .service-row.is-reversed .service-media {
+    order: 2;
+  }
+
+  .service-row.is-reversed .service-content {
+    order: 1;
+  }
+
+  .media-frame {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+  }
+
+  .service-img {
+    transition: transform 0.5s ease;
+  }
+
+  .media-frame:hover .service-img {
+    transform: scale(1.03);
+  }
+
+  .service-title {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-description {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .service-details-box {
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-wood);
+  }
+
+  .details-heading {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .details-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .details-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+  }
+
+  .service-actions {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 880px) {
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .service-row.is-reversed .service-media {
+      order: 1;
+    }
+
+    .service-row.is-reversed .service-content {
+      order: 2;
+    }
+  }
+</style>

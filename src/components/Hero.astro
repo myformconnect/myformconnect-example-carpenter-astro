@@ -1,0 +1,199 @@
+---
+// Hero.astro
+---
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">Oakline Workshop &bull; Est. 2014</p>
+        <h1 class="hero-title">
+          Crafted for your space.<br />
+          <em>Built to last.</em>
+        </h1>
+        <p class="hero-lead lead">
+          Custom furniture, cabinetry, built-ins and woodworking crafted with precision, quality materials and attention to every detail.
+        </p>
+
+        <div class="hero-actions">
+          <a href="/projects" class="btn btn-dark">
+            Explore Our Work
+          </a>
+          <a href="/quote" class="btn btn-primary">
+            Request a Quote
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">12+</span>
+            <span class="stat-label">Years of Craft</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">Solid Hardwoods</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">Bespoke</span>
+            <span class="stat-label">Architectural Joinery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-image-wrapper">
+          <img
+            src="/images/hero_image.webp"
+            alt="Handcrafting solid timber joinery at Oakline Workshop"
+            class="hero-img img-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="image-caption">
+            <span>Selected White Oak &bull; Hand-planed surface finish</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-3xl);
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-title {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.75rem, 5.5vw, 4.4rem);
+    line-height: 1.08;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--color-wood);
+  }
+
+  .hero-lead {
+    max-width: 540px;
+    margin-bottom: 2.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-family: var(--font-serif);
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background-color: var(--color-border);
+  }
+
+  .hero-media {
+    position: relative;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 12px 36px rgba(35, 37, 34, 0.06);
+  }
+
+  .hero-img {
+    transition: transform 0.6s ease;
+  }
+
+  .hero-image-wrapper:hover .hero-img {
+    transform: scale(1.02);
+  }
+
+  .image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(35, 37, 34, 0.85), transparent);
+    padding: 1.5rem 1.25rem 1rem;
+    color: #F5F3EE;
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-image-wrapper {
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+    .hero-stats {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .stat-divider {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,221 @@
+---
+// QuoteForm.astro
+import FormAttribution from './FormAttribution.astro';
+---
+
+<div class="form-card" id="quote">
+  <div class="form-header">
+    <p class="eyebrow">Custom Woodworking</p>
+    <h3 class="form-title">Request a Project Quote</h3>
+    <p class="form-subtitle">
+      Tell us about your project, dimensions, materials, and timeline. We will prepare an initial assessment and estimate.
+    </p>
+  </div>
+
+  <form
+    id="project-quote-form"
+    action="https://myformcapture.com/f/ea0e4b1a-14e1-41a5-a1b4-819e8ed7bae4"
+    method="POST"
+    novalidate
+  >
+    <!-- Honeypot -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <!-- Status Alerts -->
+    <div class="form-alert form-alert-loading" role="status" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>Submitting your quote request...</span>
+    </div>
+
+    <div class="form-alert form-alert-success" role="alert" aria-live="polite">
+      <strong>Thank you for your request!</strong> We have received your project details and will review them carefully. A craftsman will contact you shortly with next steps.
+    </div>
+
+    <div class="form-alert form-alert-error" role="alert" aria-live="polite"></div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label for="quote-name" class="form-label">
+          Full Name <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="quote-name"
+          name="name"
+          class="form-input"
+          placeholder="e.g. Clara Montgomery"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="quote-email" class="form-label">
+          Email Address <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="email"
+          id="quote-email"
+          name="email"
+          class="form-input"
+          placeholder="e.g. clara@example.com"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label for="quote-phone" class="form-label">
+          Phone Number <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="tel"
+          id="quote-phone"
+          name="phone"
+          class="form-input"
+          placeholder="e.g. 503-555-0142"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="quote-location" class="form-label">
+          Project Location <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="quote-location"
+          name="project_location"
+          class="form-input"
+          placeholder="e.g. Portland Metro, Lake Oswego, etc."
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label for="quote-type" class="form-label">
+          Project Type <span class="required" aria-hidden="true">*</span>
+        </label>
+        <select id="quote-type" name="project_type" class="form-select" required>
+          <option value="" disabled selected>Select project category...</option>
+          <option value="Custom Furniture">Custom Furniture</option>
+          <option value="Kitchen Cabinetry">Kitchen Cabinetry</option>
+          <option value="Built-in Wardrobe">Built-in Wardrobe</option>
+          <option value="Shelving & Storage">Shelving & Storage</option>
+          <option value="Interior Woodwork">Interior Woodwork</option>
+          <option value="Commercial Project">Commercial Project</option>
+          <option value="Furniture Restoration">Furniture Restoration</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="quote-budget" class="form-label">
+          Estimated Budget <span class="required" aria-hidden="true">*</span>
+        </label>
+        <select id="quote-budget" name="estimated_budget" class="form-select" required>
+          <option value="" disabled selected>Select approximate budget...</option>
+          <option value="Under $500">Under $500</option>
+          <option value="$500–$1,500">$500–$1,500</option>
+          <option value="$1,500–$3,000">$1,500–$3,000</option>
+          <option value="$3,000–$5,000">$3,000–$5,000</option>
+          <option value="$5,000+">$5,000+</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="quote-timeline" class="form-label">
+        Desired Timeline <span class="required" aria-hidden="true">*</span>
+      </label>
+      <select id="quote-timeline" name="desired_timeline" class="form-select" required>
+        <option value="" disabled selected>When would you like this completed?</option>
+        <option value="As soon as possible">As soon as possible</option>
+        <option value="Within 1 month">Within 1 month</option>
+        <option value="Within 2–3 months">Within 2–3 months</option>
+        <option value="Within 6 months">Within 6 months</option>
+        <option value="Flexible">Flexible</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="quote-description" class="form-label">
+        Project Description & Requirements <span class="required" aria-hidden="true">*</span>
+      </label>
+      <textarea
+        id="quote-description"
+        name="project_description"
+        class="form-textarea"
+        rows="5"
+        placeholder="Please describe what you are looking to build: room context, approximate dimensions, preferred timbers (e.g. White Oak, American Walnut), and any special requirements..."
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-submit-wrap">
+      <button type="submit" class="btn btn-primary btn-submit">
+        Submit Project Quote Request
+      </button>
+    </div>
+
+    <FormAttribution />
+  </form>
+</div>
+
+<script>
+  import { setupFormHandler } from '../scripts/form-handler.js';
+  const form = document.getElementById('project-quote-form');
+  if (form) {
+    setupFormHandler(form);
+  }
+</script>
+
+<style>
+  .form-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 2.75rem;
+    box-shadow: 0 4px 20px rgba(35, 37, 34, 0.03);
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+  }
+
+  .form-title {
+    font-size: 2rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .form-subtitle {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .form-submit-wrap {
+    margin-top: 1rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .form-card {
+      padding: 1.5rem;
+    }
+
+    .form-title {
+      font-size: 1.65rem;
+    }
+  }
+</style>

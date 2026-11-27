@@ -1,0 +1,421 @@
+---
+// contact.astro - Oakline Workshop Contact
+import MainLayout from '../layouts/MainLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<MainLayout
+  title="Contact Us"
+  description="Get in touch with Oakline Workshop. Send us a message, find workshop location and hours, or navigate to our quote and booking tools."
+  currentPath="/contact"
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="header-content">
+        <p class="eyebrow">Get in Touch</p>
+        <h1 class="page-title">Contact Oakline Workshop</h1>
+        <p class="page-lead lead">
+          We are here to answer questions about timber finishes, workshop visits, or existing orders. For custom project estimates and meeting scheduling, explore our dedicated quote and consultation tools below.
+        </p>
+      </div>
+
+      <!-- Quick Action Cards for Quote & Consultation -->
+      <div class="contact-actions-grid">
+        <div class="action-card action-card-quote">
+          <div class="action-card-header">
+            <span class="action-badge">Custom Work</span>
+            <div class="action-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="action-title">Request a Project Quote</h3>
+          <p class="action-desc">
+            Planning a custom dining table, built-in wardrobe, or cabinetry? Submit your room dimensions, preferred timbers, and timeline for an itemized proposal.
+          </p>
+          <div class="action-btn-wrap">
+            <a href="/quote" class="btn btn-primary action-btn">
+              Open Quote Request Page &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="action-card action-card-booking">
+          <div class="action-card-header">
+            <span class="action-badge">1-on-1 Meeting</span>
+            <div class="action-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="action-title">Book a 30-Min Consultation</h3>
+          <p class="action-desc">
+            Discuss your design ideas, inspect wood samples, or review architectural blueprints in a dedicated meeting with our master carpenter.
+          </p>
+          <div class="action-btn-wrap">
+            <button type="button" class="btn btn-dark action-btn" data-booking-popup>
+              Book Your Consultation Slot &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="contact-layout-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Main Form Column: General Inquiries -->
+        <div class="forms-column">
+          <section id="general-inquiry" class="form-block">
+            <ContactForm />
+          </section>
+        </div>
+
+        <!-- Sidebar Info Column -->
+        <aside class="sidebar-column" id="studio-info">
+          <div class="info-card sticky-card">
+            <h3 class="info-title">Oakline Workshop</h3>
+            <p class="info-tagline">Built with purpose. Crafted to last.</p>
+
+            <div class="divider"></div>
+
+            <div class="info-group">
+              <span class="info-label">Workshop &amp; Studio</span>
+              <p class="info-value">
+                148 Sawmill Lane, Timber Valley<br />
+                Portland, OR 97201
+              </p>
+              <span class="info-note">Visitors welcome by appointment. Client parking available behind workshop bay 2.</span>
+            </div>
+
+            <div class="info-group">
+              <span class="info-label">Direct Communication</span>
+              <p class="info-value">
+                <strong>Phone:</strong> <a href="tel:+15035550184" class="contact-link">(503) 555-0184</a><br />
+                <strong>Email:</strong> <a href="mailto:hello@oaklineworkshop.com" class="contact-link">hello@oaklineworkshop.com</a><br />
+                <strong>Quotes:</strong> <a href="mailto:quotes@oaklineworkshop.com" class="contact-link">quotes@oaklineworkshop.com</a>
+              </p>
+            </div>
+
+            <div class="info-group">
+              <span class="info-label">Workshop Hours</span>
+              <ul class="hours-list">
+                <li><span>Monday &ndash; Thursday:</span> <strong>8:00 AM &ndash; 5:00 PM</strong></li>
+                <li><span>Friday:</span> <strong>8:00 AM &ndash; 4:00 PM</strong></li>
+                <li><span>Saturday:</span> <strong>By Consultation Only</strong></li>
+                <li><span>Sunday:</span> <strong>Closed</strong></li>
+              </ul>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info-group">
+              <span class="info-label">What to Expect</span>
+              <ul class="expect-list">
+                <li>Fast response within 24 business hours</li>
+                <li>Clear, itemized material &amp; labor proposals</li>
+                <li>Free initial timber &amp; joinery advice</li>
+                <li>Dedicated site measuring visits for local installs</li>
+              </ul>
+            </div>
+
+            <div class="workshop-mini-photo">
+              <img
+                src="/images/hero_image.webp"
+                alt="Inside the Oakline Workshop artisan carpentry bench"
+                class="img-cover"
+                loading="lazy"
+              />
+              <span class="photo-caption">Bay 1 Workbench &bull; Benchcrafted vises</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-content {
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+  }
+
+  .page-title {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Action Cards Grid */
+  .contact-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .action-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(35, 37, 34, 0.06);
+  }
+
+  .action-card-quote {
+    border-top: 3px solid var(--color-wood);
+  }
+
+  .action-card-booking {
+    border-top: 3px solid var(--color-bg-dark);
+  }
+
+  .action-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .action-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-wood);
+  }
+
+  .action-icon {
+    color: var(--color-wood);
+  }
+
+  .action-card-booking .action-icon {
+    color: var(--color-bg-dark);
+  }
+
+  .action-title {
+    font-size: 1.45rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .action-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+    flex-grow: 1;
+  }
+
+  .action-btn-wrap {
+    margin-top: auto;
+  }
+
+  .action-btn {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+
+  /* Contact Layout */
+  .contact-layout-section {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+
+  .forms-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-block {
+    scroll-margin-top: 100px;
+  }
+
+  /* Sidebar Card */
+  .sidebar-column {
+    position: relative;
+  }
+
+  .sticky-card {
+    position: sticky;
+    top: 100px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 2.25rem;
+    box-shadow: 0 4px 20px rgba(35, 37, 34, 0.03);
+  }
+
+  .info-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-tagline {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-wood);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0;
+  }
+
+  .info-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .info-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-wood-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-value {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: 0.35rem;
+  }
+
+  .info-note {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .contact-link {
+    color: var(--color-wood);
+    text-decoration: underline;
+  }
+
+  .contact-link:hover {
+    color: var(--color-wood-dark);
+  }
+
+  .hours-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+  }
+
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-muted);
+  }
+
+  .hours-list li strong {
+    color: var(--color-text);
+  }
+
+  .expect-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .expect-list li {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .expect-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-wood);
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .workshop-mini-photo {
+    margin-top: 1.75rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    position: relative;
+    aspect-ratio: 16 / 10;
+  }
+
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(35, 37, 34, 0.8), transparent);
+    padding: 0.75rem;
+    color: #F5F3EE;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 960px) {
+    .contact-actions-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .sticky-card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .action-card {
+      padding: 1.5rem;
+    }
+
+    .sticky-card {
+      padding: 1.5rem;
+    }
+  }
+</style>

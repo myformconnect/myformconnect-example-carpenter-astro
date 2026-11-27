@@ -1,0 +1,222 @@
+---
+// Footer.astro
+---
+<footer class="site-footer bg-dark">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col footer-col-brand">
+        <a href="/" class="footer-brand" aria-label="Oakline Workshop">
+          <span class="brand-name">Oakline Workshop</span>
+        </a>
+        <p class="tagline">Built with purpose. Crafted to last.</p>
+        <p class="footer-desc">
+          Professional carpentry and bespoke woodworking. We design, craft, and install heirloom furniture, architectural joinery, and tailored cabinetry.
+        </p>
+        <div class="footer-cta-block">
+          <a href="/quote" class="btn btn-primary footer-cta-btn">
+            Request a Project Quote
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/quote">Request a Quote</a></li>
+          <li><a href="/quote#booking-section" data-booking-popup>Book Consultation</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="/services#custom-furniture">Custom Furniture</a></li>
+          <li><a href="/services#builtin-wardrobes">Built-in Wardrobes</a></li>
+          <li><a href="/services#kitchen-cabinetry">Kitchen Cabinetry</a></li>
+          <li><a href="/services#shelving-storage">Shelving & Storage</a></li>
+          <li><a href="/services#interior-woodwork">Interior Woodwork</a></li>
+          <li><a href="/services#commercial-woodwork">Commercial Woodwork</a></li>
+          <li><a href="/services#furniture-restoration">Furniture Restoration</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Workshop</h4>
+        <div class="footer-contact-info">
+          <p>
+            <strong>Location:</strong><br />
+            148 Sawmill Lane, Timber Valley<br />
+            Portland, OR 97201
+          </p>
+          <p>
+            <strong>Phone:</strong><br />
+            <a href="tel:+15035550184">(503) 555-0184</a>
+          </p>
+          <p>
+            <strong>Email:</strong><br />
+            <a href="mailto:hello@oaklineworkshop.com">hello@oaklineworkshop.com</a>
+          </p>
+          <p>
+            <strong>Hours:</strong><br />
+            Mon–Fri: 8:00 AM – 5:00 PM<br />
+            Sat: By appointment only
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="copyright">
+          &copy; {new Date().getFullYear()} Oakline Workshop. All rights reserved.
+        </p>
+        <p class="footer-note">
+          Fine carpentry, custom furniture & architectural joinery.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-lg);
+    border-top: 1px solid var(--color-border-dark);
+    margin-top: auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.25fr 1.25fr;
+    gap: 3rem;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-brand .brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.65rem;
+    color: var(--color-white);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .tagline {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-wood-light) !important;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .footer-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    max-width: 360px;
+    margin-bottom: 1.75rem;
+  }
+
+  .footer-cta-btn {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.4rem;
+  }
+
+  .footer-heading {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--color-white);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-links a {
+    font-size: 0.9375rem;
+    color: #A3A29D;
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-white);
+  }
+
+  .footer-contact-info p {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: #A3A29D;
+  }
+
+  .footer-contact-info strong {
+    color: var(--color-white);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-contact-info a {
+    color: #A3A29D;
+  }
+
+  .footer-contact-info a:hover {
+    color: var(--color-wood-light);
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border-dark);
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #7A7873;
+  }
+
+  .footer-bottom-inner p {
+    margin: 0;
+    color: #7A7873;
+  }
+
+  @media (max-width: 960px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-col-brand {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-col-brand {
+      grid-column: span 1;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

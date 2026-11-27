@@ -1,0 +1,371 @@
+---
+// services.astro - Oakline Workshop Services
+import MainLayout from '../layouts/MainLayout.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+
+const services = [
+  {
+    id: 'custom-furniture',
+    title: 'Custom Furniture',
+    eyebrow: 'Heirloom Joinery',
+    description: 'We craft bespoke freestanding furniture built to exact client specifications. Each dining table, desk, credenza, and coffee table is designed around how you live and engineered with solid mortise-and-tenon or dovetail joinery.',
+    details: [
+      'Custom dining tables (solid slab, trestle, extending)',
+      'Executive work desks and home study furniture',
+      'Low coffee tables, side tables, and nightstands',
+      'Media credenzas, sideboards, and display consoles',
+      'Hand-applied natural hardwax oils and matte urethane finishes',
+    ],
+    imageUrl: '/images/Custom_Furniture.jpg',
+    imageAlt: 'Craftsman assembling custom solid timber furniture at Oakline Workshop',
+    reversed: false,
+  },
+  {
+    id: 'builtin-wardrobes',
+    title: 'Built-in Wardrobes',
+    eyebrow: 'Architectural Storage',
+    description: 'Tailored wardrobe architecture designed around awkward alcoves, sloped ceilings, and complex master bedroom layouts. We maximize vertical capacity with thoughtful interior partitions, cedar-lined hanging bays, and integrated lighting.',
+    details: [
+      'Full floor-to-ceiling fitted bedroom wardrobe suites',
+      'Custom internal drawer units with soft-close Blum hardware',
+      'Integrated LED illumination with automatic door sensors',
+      'Linen closet and dressing room configurations',
+      'Solid wood shaker, flat-panel, or reed-profile door fronts',
+    ],
+    imageUrl: '/images/Built-in_Wardrobes.jpeg',
+    imageAlt: 'Custom fitted wardrobe joinery with warm timber detailing',
+    reversed: true,
+  },
+  {
+    id: 'kitchen-cabinetry',
+    title: 'Kitchen Cabinetry',
+    eyebrow: 'Culinary Joinery',
+    description: 'Bespoke kitchen cabinetry fabricated from solid hardwood face frames and premium birch-ply carcasses. We design kitchens that look stunning and stand up to daily culinary heat, moisture, and high-frequency use.',
+    details: [
+      'Custom floor and wall cabinetry to custom non-standard dimensions',
+      'Island units with butcher block or waterfall end panels',
+      'Concealed appliance pantries and pull-out spice systems',
+      'Solid dovetail maple drawer boxes on heavy-duty runners',
+      'Durable non-toxic, moisture-resistant protective coatings',
+    ],
+    imageUrl: '/images/Kitchen_Cabinetry.jpg',
+    imageAlt: 'Handcrafted solid wood kitchen cabinetry and custom drawers',
+    reversed: false,
+  },
+  {
+    id: 'shelving-storage',
+    title: 'Shelving & Storage',
+    eyebrow: 'Functional Elegance',
+    description: 'From discreet floating shelves with hidden steel rod supports to monumental wall-to-wall library shelving, we create functional storage that transforms blank walls into stunning visual features.',
+    details: [
+      'Heavy-duty floating solid timber shelves with invisible brackets',
+      'Floor-to-ceiling library bookcases with rolling ladder rails',
+      'Vinyl record consoles and audiophile display shelving',
+      'Architectural alcove shelving with recessed downlighting',
+      'Modular wall-mounted timber storage cubbies',
+    ],
+    imageUrl: '/images/Shelving_Storage.jpeg',
+    imageAlt: 'Custom solid timber wall shelving and bespoke storage systems',
+    reversed: true,
+  },
+  {
+    id: 'interior-woodwork',
+    title: 'Interior Woodwork',
+    eyebrow: 'Architectural Detailing',
+    description: 'Elevate your interior architecture with custom wooden paneling, solid timber internal doors, baseboards, architraves, and acoustic timber slat wall treatments crafted with millimeter precision.',
+    details: [
+      'Custom interior solid wood pivot doors and sliding barn doors',
+      'Acoustic slatted timber feature walls and ceiling baffles',
+      'Bespoke wainscoting, board-and-batten, and tongue-and-groove paneling',
+      'Handcrafted window sills, casing, and custom crown molding',
+      'Structural timber beam claddings and column wraps',
+    ],
+    imageUrl: '/images/Interior_Woodwork.jpeg',
+    imageAlt: 'Bespoke architectural interior woodwork and wooden detailing',
+    reversed: false,
+  },
+  {
+    id: 'commercial-woodwork',
+    title: 'Commercial Woodwork',
+    eyebrow: 'Hospitality & Retail',
+    description: 'We collaborate with architects, interior designers, and business owners to produce high-impact wooden fixtures for cafés, boutiques, corporate offices, restaurants, and hospitality environments.',
+    details: [
+      'Custom coffee shop counters and espresso service bars',
+      'Corporate boardroom conference tables with wire-management bays',
+      'Retail display units, vitrines, and boutique merchandising shelving',
+      'Reception desks and entrance architectural joinery',
+      'Commercial-grade polyurethane and fire-rated timber treatments',
+    ],
+    imageUrl: '/images/Commercial_Woodwork.jpeg',
+    imageAlt: 'Custom commercial woodwork and architectural reception counter',
+    reversed: true,
+  },
+  {
+    id: 'furniture-restoration',
+    title: 'Furniture Restoration',
+    eyebrow: 'Preservation & Care',
+    description: 'Preserve treasured vintage and antique wooden furniture. We offer meticulous structural repair, sympathetic grain-matching veneer repairs, finish removal, and traditional hand-rubbed shellac and oil restoration.',
+    details: [
+      'Wobbly chair and table frame dismantling, regluing, and joint reinforcement',
+      'Gentle chemical-free surface stripping and hand sanding',
+      'Historic finish replication (French polish, Danish oil, wax)',
+      'Missing carved molding and veneer patch reproduction',
+      'Water ring, burn, and surface scratch rectification',
+    ],
+    imageUrl: '/images/Furniture_Restoration.jpg',
+    imageAlt: 'Woodworker restoring and refinishing vintage solid hardwood furniture',
+    reversed: false,
+  },
+];
+---
+
+<MainLayout
+  title="Our Services"
+  description="Explore Oakline Workshop's specialized woodworking services: custom furniture, built-in wardrobes, kitchen cabinetry, interior woodwork, and restoration."
+  currentPath="/services"
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="header-content">
+        <p class="eyebrow">Our Capabilities</p>
+        <h1 class="page-title">Woodworking &amp; Carpentry Services</h1>
+        <p class="page-lead lead">
+          From singular heirloom dining tables to comprehensive architectural joinery packages, we bring thoughtful design and uncompromising craftsmanship to every project.
+        </p>
+      </div>
+
+      <div class="service-nav-bar">
+        <span class="jump-label">Jump to:</span>
+        <div class="jump-links">
+          {services.map((s) => (
+            <a href={`#${s.id}`} class="jump-pill">{s.title}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Rows -->
+  <div class="container services-list-wrap">
+    {services.map((service) => (
+      <ServiceSection
+        id={service.id}
+        title={service.title}
+        eyebrow={service.eyebrow}
+        description={service.description}
+        details={service.details}
+        imageUrl={service.imageUrl}
+        imageAlt={service.imageAlt}
+        reversed={service.reversed}
+      />
+    ))}
+  </div>
+
+  <!-- Timber Selection Banner -->
+  <section class="section bg-alt timber-guide-section">
+    <div class="container">
+      <div class="timber-grid">
+        <div class="timber-intro">
+          <p class="eyebrow">Sustainable Materials</p>
+          <h2>Honest Timber Sourcing</h2>
+          <p>
+            The foundation of enduring woodwork is stable, properly kiln-dried lumber. We prioritize locally harvested, sustainably managed North American hardwoods.
+          </p>
+          <a href="/quote" class="btn btn-dark">
+            Discuss Your Timber Preferences
+          </a>
+        </div>
+
+        <div class="species-cards">
+          <div class="species-card">
+            <h4>American White Oak</h4>
+            <p>Dense, water-resistant, with striking medullary ray flecks. Ideal for dining tables, flooring, and kitchen cabinetry.</p>
+          </div>
+          <div class="species-card">
+            <h4>Black Walnut</h4>
+            <p>Rich chocolate and amber tones with deep figuring. A premium choice for executive furniture and accent cabinetry.</p>
+          </div>
+          <div class="species-card">
+            <h4>Hard Rock Maple</h4>
+            <p>Exceptionally fine grain, pale blond coloration, and incredible hardness. Excellent for culinary butcher blocks and drawer carcasses.</p>
+          </div>
+          <div class="species-card">
+            <h4>Pacific Douglas Fir</h4>
+            <p>Warm reddish hues, tight vertical grain lines, and distinctive West Coast character for architectural wall paneling and interior beams.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container-narrow text-center">
+      <p class="eyebrow">Commission a Project</p>
+      <h2 class="cta-title">Ready to bring your woodworking project to life?</h2>
+      <p class="cta-desc lead">
+        Contact us with your project details, dimensions, and timeline. We'll be pleased to provide recommendations and a quote.
+      </p>
+      <div class="cta-actions">
+        <a href="/quote" class="btn btn-primary btn-lg">
+          Request a Detailed Quote
+        </a>
+        <a href="/quote#booking-section" data-booking-popup class="btn btn-outline btn-lg">
+          Book Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-content {
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+  }
+
+  .page-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .service-nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+  }
+
+  .jump-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .jump-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .jump-pill {
+    font-size: 0.8125rem;
+    padding: 0.4rem 0.85rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    transition: all var(--transition);
+  }
+
+  .jump-pill:hover {
+    background-color: var(--color-wood);
+    color: var(--color-white);
+    border-color: var(--color-wood);
+  }
+
+  .services-list-wrap {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  /* Timber Section */
+  .timber-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .species-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .species-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+  }
+
+  .species-card h4 {
+    color: var(--color-wood-dark);
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .species-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-desc {
+    margin: 0 auto 2.5rem;
+    max-width: 620px;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-lg {
+    padding: 1.1rem 2.25rem;
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 900px) {
+    .timber-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .species-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+    }
+
+    .cta-actions .btn {
+      width: 100%;
+    }
+  }
+</style>

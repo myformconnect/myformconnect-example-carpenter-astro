@@ -1,0 +1,169 @@
+---
+// ContactForm.astro
+import FormAttribution from './FormAttribution.astro';
+---
+
+<div class="form-card">
+  <div class="form-header">
+    <h3 class="form-title">Send a Message</h3>
+    <p class="form-subtitle">Have a quick question or inquiry? Reach out to our workshop team.</p>
+  </div>
+
+  <form
+    id="general-contact-form"
+    action="https://myformcapture.com/f/ea0e4b1a-14e1-41a5-a1b4-819e8ed7bae4"
+    method="POST"
+    novalidate
+  >
+    <!-- Hidden Honeypot Field -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <!-- Status Alerts -->
+    <div class="form-alert form-alert-loading" role="status" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>Submitting your message...</span>
+    </div>
+
+    <div class="form-alert form-alert-success" role="alert" aria-live="polite">
+      <strong>Thank you!</strong> Your message has been received. Our team will get back to you within 1 business day.
+    </div>
+
+    <div class="form-alert form-alert-error" role="alert" aria-live="polite"></div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label for="contact-name" class="form-label">
+          Your Name <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="contact-name"
+          name="name"
+          class="form-input"
+          placeholder="e.g. Thomas Vance"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="contact-email" class="form-label">
+          Email Address <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="email"
+          id="contact-email"
+          name="email"
+          class="form-input"
+          placeholder="e.g. thomas@example.com"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label for="contact-phone" class="form-label">
+          Phone Number <span class="optional">(optional)</span>
+        </label>
+        <input
+          type="tel"
+          id="contact-phone"
+          name="phone"
+          class="form-input"
+          placeholder="e.g. 503-555-0199"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="contact-subject" class="form-label">
+          Subject <span class="required" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="contact-subject"
+          name="subject"
+          class="form-input"
+          placeholder="e.g. Question about timber finishes"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contact-message" class="form-label">
+        Message <span class="required" aria-hidden="true">*</span>
+      </label>
+      <textarea
+        id="contact-message"
+        name="message"
+        class="form-textarea"
+        rows="5"
+        placeholder="How can we help with your woodworking or carpentry project?"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-submit-wrap">
+      <button type="submit" class="btn btn-primary btn-submit">
+        Send Message
+      </button>
+    </div>
+
+    <FormAttribution />
+  </form>
+</div>
+
+<script>
+  import { setupFormHandler } from '../scripts/form-handler.js';
+  const form = document.getElementById('general-contact-form');
+  if (form) {
+    setupFormHandler(form);
+  }
+</script>
+
+<style>
+  .form-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(35, 37, 34, 0.03);
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+  }
+
+  .form-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    margin-bottom: 0;
+  }
+
+  .form-label .optional {
+    color: var(--color-text-faint);
+    font-size: 0.8125rem;
+    font-weight: 400;
+  }
+
+  .form-submit-wrap {
+    margin-top: 1rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-card {
+      padding: 1.5rem;
+    }
+  }
+</style>

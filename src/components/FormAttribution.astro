@@ -1,0 +1,27 @@
+---
+// FormAttribution.astro
+---
+<div class="form-attribution">
+  Powered by <a href="https://myformcapture.com" target="_blank" rel="noopener noreferrer">MyFormCapture</a>
+</div>
+
+<style>
+  .form-attribution {
+    margin-top: 1.25rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .form-attribution a {
+    color: var(--color-wood, #A4774D);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .form-attribution a:hover {
+    color: var(--color-wood-dark, #7A5432);
+    text-decoration: underline;
+  }
+</style>
